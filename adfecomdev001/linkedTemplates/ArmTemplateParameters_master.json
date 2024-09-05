@@ -14,6 +14,12 @@
 		"LS_REST_PAR_SINK_accountKey": {
 			"value": ""
 		},
+		"LS_MANULFILE_PAR_accountKey": {
+			"value": ""
+		},
+		"LS_MANULFILE_PAR_SINK_accountKey": {
+			"value": ""
+		},
 		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
 			"value": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
 		},
@@ -34,6 +40,15 @@
 		},
 		"LS_REST_PAR_SINK_properties_typeProperties_url": {
 			"value": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_properties_typeProperties_url": {
+			"value": "https://adlsrawecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+			"value": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"EVNT_MANULFILE_INGESTION_properties_typeProperties_scope": {
+			"value": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourceGroups/rg_devecom/providers/Microsoft.Storage/storageAccounts/adlsrawecomdev001"
 		},
 		"containerUri": {
 			"value": ""

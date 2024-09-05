@@ -19,6 +19,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_PAR_SINK'"
 		},
+		"LS_MANULFILE_PAR_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MANULFILE_PAR'"
+		},
+		"LS_MANULFILE_PAR_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MANULFILE_PAR_SINK'"
+		},
 		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
@@ -46,6 +54,18 @@
 		"LS_REST_PAR_SINK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsrawecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"EVNT_MANULFILE_INGESTION_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourceGroups/rg_devecom/providers/Microsoft.Storage/storageAccounts/adlsrawecomdev001"
 		}
 	},
 	"variables": {
@@ -469,6 +489,218 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/PL_REST_PAR')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_MANULFILE_ADLS_PAR')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data from ADLS",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_MANUALFILE_PAR",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_MANULFILE_PAR_SINK",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_MANUALFILE_PAR')]",
+				"[concat(variables('factoryId'), '/datasets/DS_MANULFILE_PAR_SINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_MANULFILE_PAR')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_MANULFILE_PAR_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_MANULFILE_PAR_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_MANUALFILE_PAR')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_MANULFILE_PAR",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "payments.csv",
+						"fileSystem": "manualfilepayments"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "order_id",
+						"type": "String"
+					},
+					{
+						"name": "payment_sequential",
+						"type": "String"
+					},
+					{
+						"name": "payment_type",
+						"type": "String"
+					},
+					{
+						"name": "payment_installments",
+						"type": "String"
+					},
+					{
+						"name": "payment_value",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_MANULFILE_PAR')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_MANULFILE_PAR_SINK')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_MANULFILE_PAR_SINK_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_MANULFILE_PAR_SINK_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_MANULFILE_PAR_SINK')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_MANULFILE_PAR_SINK",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "payments"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_MANULFILE_PAR_SINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/EVNT_MANULFILE_INGESTION')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL_MANULFILE_ADLS_PAR",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/manualfilepayments/blobs/",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('EVNT_MANULFILE_INGESTION_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_MANULFILE_ADLS_PAR')]"
 			]
 		}
 	]

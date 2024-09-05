@@ -19,6 +19,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_REST_PAR_SINK'"
 		},
+		"LS_MANULFILE_PAR_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MANULFILE_PAR'"
+		},
+		"LS_MANULFILE_PAR_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MANULFILE_PAR_SINK'"
+		},
 		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
@@ -46,6 +54,18 @@
 		"LS_REST_PAR_SINK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsrawecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"EVNT_MANULFILE_INGESTION_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourceGroups/rg_devecom/providers/Microsoft.Storage/storageAccounts/adlsrawecomdev001"
 		},
 		"containerUri": {
 			"type": "string",
@@ -80,6 +100,12 @@
 					"LS_REST_PAR_SINK_accountKey": {
 						"value": "[parameters('LS_REST_PAR_SINK_accountKey')]"
 					},
+					"LS_MANULFILE_PAR_accountKey": {
+						"value": "[parameters('LS_MANULFILE_PAR_accountKey')]"
+					},
+					"LS_MANULFILE_PAR_SINK_accountKey": {
+						"value": "[parameters('LS_MANULFILE_PAR_SINK_accountKey')]"
+					},
 					"LS_SqlServer_password": {
 						"value": "[parameters('LS_SqlServer_password')]"
 					},
@@ -95,6 +121,12 @@
 					"LS_REST_PAR_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_PAR_SINK_properties_typeProperties_url')]"
 					},
+					"LS_MANULFILE_PAR_properties_typeProperties_url": {
+						"value": "[parameters('LS_MANULFILE_PAR_properties_typeProperties_url')]"
+					},
+					"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_MANULFILE_PAR_SINK_properties_typeProperties_url')]"
+					},
 					"LS_SqlServer_properties_typeProperties_server": {
 						"value": "[parameters('LS_SqlServer_properties_typeProperties_server')]"
 					},
@@ -103,6 +135,9 @@
 					},
 					"LS_SqlServer_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SqlServer_properties_typeProperties_userName')]"
+					},
+					"EVNT_MANULFILE_INGESTION_properties_typeProperties_scope": {
+						"value": "[parameters('EVNT_MANULFILE_INGESTION_properties_typeProperties_scope')]"
 					}
 				}
 			},
