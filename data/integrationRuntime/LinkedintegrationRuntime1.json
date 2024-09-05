@@ -1,0 +1,13 @@
+{
+	"name": "LinkedintegrationRuntime1",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "This Integration Runtime is linked with Integration Runtimeof ADFoneMY",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}
