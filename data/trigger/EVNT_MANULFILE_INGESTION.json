@@ -1,0 +1,24 @@
+{
+	"name": "EVNT_MANULFILE_INGESTION",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_MANULFILE_ADLS_PAR",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/manualfilepayments/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourceGroups/rg_devecom/providers/Microsoft.Storage/storageAccounts/adlsrawecomdev001",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

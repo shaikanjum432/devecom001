@@ -1,0 +1,19 @@
+{
+	"name": "DS_MANULFILE_PAR_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_MANULFILE_PAR_SINK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "payments"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
