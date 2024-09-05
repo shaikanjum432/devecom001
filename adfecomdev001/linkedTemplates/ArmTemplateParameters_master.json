@@ -11,6 +11,9 @@
 		"LS_SQL_PAR_accountKey": {
 			"value": ""
 		},
+		"LS_REST_PAR_SINK_accountKey": {
+			"value": ""
+		},
 		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
 			"value": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
 		},
@@ -24,6 +27,12 @@
 			"value": "sa"
 		},
 		"LS_SQL_PAR_properties_typeProperties_url": {
+			"value": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_REST_PAR_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/PjOPhV/data"
+		},
+		"LS_REST_PAR_SINK_properties_typeProperties_url": {
 			"value": "https://adlssiecomdev001.dfs.core.windows.net/"
 		},
 		"containerUri": {
