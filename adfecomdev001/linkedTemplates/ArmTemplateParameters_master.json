@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfecomdev001"
+		},
+		"LS_SqlServer_password": {
+			"value": ""
+		},
+		"LS_SQL_PAR_accountKey": {
+			"value": ""
+		},
+		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
+		},
+		"LS_SqlServer_properties_typeProperties_server": {
+			"value": "LAPTOP-3FGB03GR\\SQLEXPRESS"
+		},
+		"LS_SqlServer_properties_typeProperties_database": {
+			"value": "ecom_database"
+		},
+		"LS_SqlServer_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"LS_SQL_PAR_properties_typeProperties_url": {
+			"value": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
