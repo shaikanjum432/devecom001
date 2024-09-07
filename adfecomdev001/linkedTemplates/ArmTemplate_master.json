@@ -7,17 +7,9 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfecomdev001"
 		},
-		"LS_SqlServer_password": {
+		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_SqlServer'"
-		},
-		"LS_SQL_PAR_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PAR'"
-		},
-		"LS_REST_PAR_SINK_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_REST_PAR_SINK'"
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
 		"LS_MANULFILE_PAR_accountKey": {
 			"type": "secureString",
@@ -27,9 +19,45 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_MANULFILE_PAR_SINK'"
 		},
-		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+		"LS_ORDERS_PAR_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ORDERS_PAR'"
+		},
+		"LS_REST_PAR_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_REST_PAR_SINK'"
+		},
+		"LS_SQL_PAR_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_PAR'"
+		},
+		"LS_SqlServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SqlServer'"
+		},
+		"LS_MANULFILE_PAR_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
+			"defaultValue": "https://adlsrawecomdev001.dfs.core.windows.net/"
+		},
+		"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_ORDERS_PAR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_REST_PAR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/PjOPhV/data"
+		},
+		"LS_REST_PAR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
+		},
+		"LS_SQL_PAR_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
 		},
 		"LS_SqlServer_properties_typeProperties_server": {
 			"type": "string",
@@ -43,29 +71,13 @@
 			"type": "string",
 			"defaultValue": "sa"
 		},
-		"LS_SQL_PAR_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
-		},
-		"LS_REST_PAR_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://retoolapi.dev/PjOPhV/data"
-		},
-		"LS_REST_PAR_SINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
-		},
-		"LS_MANULFILE_PAR_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsrawecomdev001.dfs.core.windows.net/"
-		},
-		"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlssiecomdev001.dfs.core.windows.net/"
-		},
 		"EVNT_MANULFILE_INGESTION_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourceGroups/rg_devecom/providers/Microsoft.Storage/storageAccounts/adlsrawecomdev001"
+		},
+		"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/1d0dee26-79e1-43df-875b-593f4a0f5a58/resourcegroups/ResourceGroup_My/providers/Microsoft.DataFactory/factories/ADFOneMy/integrationruntimes/integrationRuntime1new"
 		},
 		"containerUri": {
 			"type": "string",
@@ -94,11 +106,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"LS_SQL_PAR_accountKey": {
-						"value": "[parameters('LS_SQL_PAR_accountKey')]"
-					},
-					"LS_REST_PAR_SINK_accountKey": {
-						"value": "[parameters('LS_REST_PAR_SINK_accountKey')]"
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
 					"LS_MANULFILE_PAR_accountKey": {
 						"value": "[parameters('LS_MANULFILE_PAR_accountKey')]"
@@ -106,14 +115,26 @@
 					"LS_MANULFILE_PAR_SINK_accountKey": {
 						"value": "[parameters('LS_MANULFILE_PAR_SINK_accountKey')]"
 					},
+					"LS_ORDERS_PAR_accountKey": {
+						"value": "[parameters('LS_ORDERS_PAR_accountKey')]"
+					},
+					"LS_REST_PAR_SINK_accountKey": {
+						"value": "[parameters('LS_REST_PAR_SINK_accountKey')]"
+					},
+					"LS_SQL_PAR_accountKey": {
+						"value": "[parameters('LS_SQL_PAR_accountKey')]"
+					},
 					"LS_SqlServer_password": {
 						"value": "[parameters('LS_SqlServer_password')]"
 					},
-					"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
-						"value": "[parameters('LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+					"LS_MANULFILE_PAR_properties_typeProperties_url": {
+						"value": "[parameters('LS_MANULFILE_PAR_properties_typeProperties_url')]"
 					},
-					"LS_SQL_PAR_properties_typeProperties_url": {
-						"value": "[parameters('LS_SQL_PAR_properties_typeProperties_url')]"
+					"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_MANULFILE_PAR_SINK_properties_typeProperties_url')]"
+					},
+					"LS_ORDERS_PAR_properties_typeProperties_url": {
+						"value": "[parameters('LS_ORDERS_PAR_properties_typeProperties_url')]"
 					},
 					"LS_REST_PAR_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_PAR_properties_typeProperties_url')]"
@@ -121,11 +142,11 @@
 					"LS_REST_PAR_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_REST_PAR_SINK_properties_typeProperties_url')]"
 					},
-					"LS_MANULFILE_PAR_properties_typeProperties_url": {
-						"value": "[parameters('LS_MANULFILE_PAR_properties_typeProperties_url')]"
+					"LS_SQL_PAR_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_PAR_properties_typeProperties_url')]"
 					},
-					"LS_MANULFILE_PAR_SINK_properties_typeProperties_url": {
-						"value": "[parameters('LS_MANULFILE_PAR_SINK_properties_typeProperties_url')]"
+					"LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('LinkedintegrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
 					},
 					"LS_SqlServer_properties_typeProperties_server": {
 						"value": "[parameters('LS_SqlServer_properties_typeProperties_server')]"
@@ -142,6 +163,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adfecomdev001_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfecomdev001_ArmTemplate_0')]"
+			]
 		}
 	]
 }
